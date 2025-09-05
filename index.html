@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Drawer - Mystical Decision Making</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Game Selection Page -->
+    <div id="mainPage" class="page active">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        
+        <div class="container">
+            <header class="main-header">
+                <h1 class="main-title">
+                    <span class="title-text">Choose Your Adventure</span>
+                    <span class="shimmer"></span>
+                </h1>
+                <p class="subtitle">Four realms await your presence. Each holds its own magic, its own rewards.</p>
+            </header>
+
+            <div class="game-grid">
+                <div class="game-card" data-game="dice-dreams">
+                    <div class="card-icon">🎲</div>
+                    <h3 class="card-title">Dice Dreams</h3>
+                    <p class="card-description">Roll the enchanted dice and let destiny guide your path through mystical adventures.</p>
+                    <div class="card-decoration">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="hearts-gamble">
+                    <div class="card-icon">❤️</div>
+                    <h3 class="card-title">Heart's Gamble</h3>
+                    <p class="card-description">Where love and luck intertwine. Place your bets on matters of the heart.</p>
+                    <div class="card-decoration">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="cosmic-cards">
+                    <div class="card-icon">⭐</div>
+                    <h3 class="card-title">Cosmic Cards</h3>
+                    <p class="card-description">Draw from the stellar deck and unlock the secrets hidden among the stars.</p>
+                    <div class="card-decoration">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="golden-chance">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Golden Chance</h3>
+                    <p class="card-description">Fortune favors the bold. Will you seize your moment of golden opportunity?</p>
+                    <div class="card-decoration">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dice Dreams Game Page -->
+    <div id="diceDreamsPage" class="page">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        
+        <div class="game-container">
+            <header class="game-header">
+                <button id="backToGames" class="back-button">← Back to Games</button>
+                <h1 class="game-title">
+                    <span class="sparkle">✨</span>
+                    Dice Dreams
+                    <span class="sparkle">✨</span>
+                </h1>
+                <div class="balance-display">
+                    <span class="balance-label">Balance:</span>
+                    <span id="currentBalance" class="balance-amount">$0</span>
+                </div>
+                <button id="newGameBtn" class="new-game-btn">New Game</button>
+            </header>
+
+            <div class="game-content">
+                <!-- Game Setup Modal -->
+                <div id="setupModal" class="modal active">
+                    <div class="modal-content">
+                        <h2>Welcome to Dice Dreams</h2>
+                        <p>Enter your starting balance to begin your mystical journey.</p>
+                        <div class="input-group">
+                            <label for="startingBalance">Starting Balance (Minimum $50):</label>
+                            <input type="number" id="startingBalance" min="50" value="100" placeholder="Enter amount">
+                        </div>
+                        <button id="startGame" class="start-btn">Begin Adventure</button>
+                    </div>
+                </div>
+
+                <!-- Betting Interface -->
+                <div id="bettingInterface" class="betting-interface">
+                    <div class="betting-panel">
+                        <h2>The Cosmic Dice Decide Your Fate</h2>
+                        
+                        <div class="prediction-section">
+                            <h3>Choose Your Prediction:</h3>
+                            <div class="prediction-buttons">
+                                <button class="prediction-btn" data-prediction="under">
+                                    <span class="prediction-text">Under 7</span>
+                                    <span class="payout">2x Payout</span>
+                                </button>
+                                <button class="prediction-btn" data-prediction="exactly">
+                                    <span class="prediction-text">Exactly 7</span>
+                                    <span class="payout">5x Payout</span>
+                                </button>
+                                <button class="prediction-btn" data-prediction="over">
+                                    <span class="prediction-text">Over 7</span>
+                                    <span class="payout">2x Payout</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bet-section">
+                            <h3>Place Your Bet:</h3>
+                            <div class="bet-input-group">
+                                <input type="number" id="betAmount" min="1" placeholder="Enter bet amount">
+                                <button id="placeBetBtn" class="place-bet-btn" disabled>Place Bet & Roll</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dice-section">
+                        <h2>Cast the Sacred Dice</h2>
+                        <div class="dice-container">
+                            <div class="dice" id="dice1">
+                                <div class="cube">
+                                    <div class="face one"><span class="pip"></span></div>
+                                    <div class="face two">
+                                        <span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face three">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face four">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face five">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face six">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dice" id="dice2">
+                                <div class="cube">
+                                    <div class="face one"><span class="pip"></span></div>
+                                    <div class="face two">
+                                        <span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face three">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face four">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face five">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                    <div class="face six">
+                                        <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="diceTotal" class="dice-total"></div>
+                    </div>
+                </div>
+
+                <!-- Results Display -->
+                <div id="resultsDisplay" class="results-display">
+                    <div class="result-content">
+                        <div id="resultStatus" class="result-status"></div>
+                        <div id="resultMessage" class="result-message"></div>
+                        <div id="balanceUpdate" class="balance-update"></div>
+                    </div>
+                </div>
+
+                <!-- Game Over Display -->
+                <div id="gameOverDisplay" class="game-over-display">
+                    <div class="game-over-content">
+                        <h2>Your Journey Ends</h2>
+                        <p>The cosmic dice have spoken, and your balance has reached zero.</p>
+                        <p>Fear not, brave adventurer - every ending is but a new beginning.</p>
+                        <button id="restartGame" class="restart-btn">Begin Anew</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
