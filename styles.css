@@ -366,9 +366,10 @@ body {
 /* Betting Interface */
 .betting-interface {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
 }
 
 .betting-panel {
@@ -487,8 +488,10 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2rem 3rem;
     text-align: center;
+    max-width: 900px;
+    width: 100%;
 }
 
 .dice-section h2 {
@@ -500,13 +503,13 @@ body {
 .dice-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 3rem;
+    margin: 1rem auto 2rem auto;
 }
 
 .dice {
-    width: 80px;
-    height: 80px;
+    width: 140px;
+    height: 140px;
     position: relative;
     perspective: 600px;
 }
@@ -532,12 +535,12 @@ body {
 }
 
 /* Position faces around cube (front: one, right: two, back: three, left: four, top: five, bottom: six) */
-.dice .face.one { transform: translateZ(40px); }
-.dice .face.two { transform: rotateY(90deg) translateZ(40px); }
-.dice .face.three { transform: rotateY(180deg) translateZ(40px); }
-.dice .face.four { transform: rotateY(-90deg) translateZ(40px); }
-.dice .face.five { transform: rotateX(90deg) translateZ(40px); }
-.dice .face.six { transform: rotateX(-90deg) translateZ(40px); }
+.dice .face.one { transform: translateZ(70px); }
+.dice .face.two { transform: rotateY(90deg) translateZ(70px); }
+.dice .face.three { transform: rotateY(180deg) translateZ(70px); }
+.dice .face.four { transform: rotateY(-90deg) translateZ(70px); }
+.dice .face.five { transform: rotateX(90deg) translateZ(70px); }
+.dice .face.six { transform: rotateX(-90deg) translateZ(70px); }
 
 .pip {
     width: 10px;
@@ -722,19 +725,13 @@ body {
         gap: 1rem;
     }
     
-    .betting-interface {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+    .betting-interface { grid-template-columns: 1fr; gap: 1.5rem; }
     
     .dice-container {
         gap: 1rem;
     }
     
-    .dice {
-        width: 60px;
-        height: 60px;
-    }
+    .dice { width: 110px; height: 110px; }
     
     .bet-input-group {
         flex-direction: column;

@@ -190,6 +190,8 @@ function resetBettingInterface() {
     // Reset dice display
     dice1.dataset.value = '';
     dice2.dataset.value = '';
+    dice1.querySelector('.cube').style.transform = 'rotateX(0deg) rotateY(0deg)';
+    dice2.querySelector('.cube').style.transform = 'rotateX(0deg) rotateY(0deg)';
     diceTotal.textContent = '';
     
     // Update place bet button
@@ -210,7 +212,7 @@ function validateBetAmount() {
 }
 
 function updatePlaceBetButton() {
-    const canPlaceBet = gameState.selectedPrediction && 
+    const canPlaceBet = gameState.gameStarted && gameState.selectedPrediction && 
                        gameState.betAmount > 0 && 
                        gameState.betAmount <= gameState.balance &&
                        !gameState.isRolling;
@@ -230,7 +232,6 @@ function placeBetAndRoll() {
     gameState.betAmount = betAmount;
     gameState.balance -= betAmount;
     updateBalanceDisplay();
-    
     rollDice();
 }
 
@@ -335,6 +336,7 @@ function processResult(total) {
             hideResults();
             resetBettingInterface();
             updatePlaceBetButton();
+            gameState.isRolling = false;
         }, 3000);
     }
 }
